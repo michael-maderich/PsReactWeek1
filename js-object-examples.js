@@ -19,6 +19,12 @@ const myInfo = {
     personalInfo: {"favoriteFood":"hamburger","age":40}
 }
 
-console.log("other object", myInfo);
+console.log("\nother object", myInfo);
 
-console.log("My info stringified:", JSON.stringify(myInfo));
+console.log("\nMy info stringified:", JSON.stringify(myInfo));
+
+function sayHi(name) {
+    return `\nMy name is ${name}`;
+}
+
+console.log(sayHi("Mike"));
