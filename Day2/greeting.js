@@ -11,9 +11,16 @@ Use "my" if the isSelf argument is true
 */
 const greetingWords = ["hello","hi","hey"];
 const prefixes = ["my", "his", "her", "their"];
-
 //Possible values of "gender" argument are "male", "female", "nonbinary"
-let genders = ["self", "male", "female", "nonbinary"];
+const genders = ["self", "male", "female", "nonbinary"];
+
+function firstCharsUpper(word) {
+    let words = word.split(" ");
+    words.forEach( (w, i, arr) => {
+        arr[i] = w.charAt(0).toUpperCase() + w.toLowerCase().slice(1);
+    });
+    return words.join(" ");
+}
 /*
 /**
  @param {string} name
@@ -26,14 +33,15 @@ let genders = ["self", "male", "female", "nonbinary"];
 function greeting(name, gender, isSelf) {
     if (isSelf) gender = 'self';
     let genderPrefix = prefixes[genders.indexOf(gender.toLowerCase())];
-    if (genderPrefix === undefined) genderPrefix = 'their';
-    let salutation = greetingWords[Math.floor(Math.random()*3)];
-    salutation = salutation.charAt(0).toUpperCase() + salutation.slice(1);
-  return  `${salutation}, ${genderPrefix} name is ${name}`;
+    let salutation = greetingWords[Math.floor(Math.random()*greeting.length)];
+    salutation = firstCharsUpper(salutation);
+    if (!/[a-zA-Z ']+/.test(name) | (genderPrefix === undefined))
+        return "Please check your name or enter the proper gender. e.g) male, female or nonbinary ";
+    else return `${salutation}, ${genderPrefix} name is ${firstCharsUpper(name)}`;
 }
 
 console.log(greeting('Michael', 'male', true));
 console.log(greeting("Suzie", "female", false));
 console.log(greeting('Pat', 'NoNbInaRy', false));
-console.log(greeting('Slim Shady', `male`, 1));
-console.log(greeting('Alien', 'kezxidaw', false));
+console.log(greeting('slim shady', `male`, 1));
+console.log(greeting('aLIEn', 'kezxidaw', false));
