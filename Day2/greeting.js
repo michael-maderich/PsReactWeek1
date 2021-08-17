@@ -14,14 +14,20 @@ const prefixes = ["my", "his", "her", "their"];
 //Possible values of "gender" argument are "male", "female", "nonbinary"
 const genders = ["self", "male", "female", "nonbinary"];
 
-function firstCharsUpper(word) {
-    let words = word.split(" ");
+/**
+ @param {string} phrase
+        String to capitalize
+ @returns {string}
+        String with each first letter of word changed to uppercase
+*/
+function firstCharsUpper(phrase) {
+    let words = phrase.split(" ");
     words.forEach( (w, i, arr) => {
         arr[i] = w.charAt(0).toUpperCase() + w.toLowerCase().slice(1);
     });
     return words.join(" ");
 }
-/*
+
 /**
  @param {string} name
         name of person
@@ -33,11 +39,10 @@ function firstCharsUpper(word) {
 function greeting(name, gender, isSelf) {
     if (isSelf) gender = 'self';
     let genderPrefix = prefixes[genders.indexOf(gender.toLowerCase())];
+    if (genderPrefix === undefined) genderPrefix = "their";
     let salutation = greetingWords[Math.floor(Math.random()*greeting.length)];
     salutation = firstCharsUpper(salutation);
-    if (!/[a-zA-Z ']+/.test(name) | (genderPrefix === undefined))
-        return "Please check your name or enter the proper gender. e.g) male, female or nonbinary ";
-    else return `${salutation}, ${genderPrefix} name is ${firstCharsUpper(name)}`;
+    return `${salutation}, ${genderPrefix} name is ${firstCharsUpper(name)}`;
 }
 
 console.log(greeting('Michael', 'male', true));
