@@ -1,13 +1,13 @@
 function drawAnyPizza(length, width) {
-    var pizza = ' ';
-    var bottom = '|';
+    var pizza = '╔';
+    var bottom = '╚';
     for (var i = 0; i < width; i++) {
-        pizza += '_';
-        bottom += '_';
+        pizza += '═';
+        bottom += '═';
     }
-    pizza += '\n'; // Finish off top
+    pizza += '╗\n'; // Finish off top
     for (var j = 0; j < length - 1; j++) { // Rando generate middle portions
-        var middle = '|';
+        var middle = '║';
         for (var i = 0; i < width; i++) {
             var toppingNum = Math.round((Math.random() * 15)); //**( Math.floor(Math.random()*23) ) ) *111);
             var topping = '';
@@ -39,10 +39,10 @@ function drawAnyPizza(length, width) {
             }
             middle += topping; //Math.floor(Math.random()*2)?'.':' ';
         }
-        middle += '|\n';
+        middle += '║\n';
         pizza += middle;
     }
-    bottom += '|';
+    bottom += '╝';
     pizza += bottom;
     return pizza;
 }

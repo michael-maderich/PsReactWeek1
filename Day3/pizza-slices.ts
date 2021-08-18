@@ -1,13 +1,13 @@
 function drawAnyPizza(length, width) {
-    let pizza = ' ';
-    let bottom = '|';
+    let pizza = '╔';
+    let bottom = '╚';
     for (let i = 0; i < width; i++) {
-        pizza += '_';
-        bottom += '_';
+        pizza += '═';
+        bottom += '═';
     }
-        pizza+='\n';        // Finish off top
+        pizza+='╗\n';        // Finish off top
     for (let j = 0; j < length-1; j++) {    // Rando generate middle portions
-        let middle = '|';
+        let middle = '║';
         for (let i = 0; i < width; i++) {
             let toppingNum = Math.round( ( Math.random()*15));//**( Math.floor(Math.random()*23) ) ) *111);
             let topping='';
@@ -23,10 +23,10 @@ function drawAnyPizza(length, width) {
             }
             middle += topping;  //Math.floor(Math.random()*2)?'.':' ';
         }
-        middle += '|\n';
+        middle += '║\n';
         pizza += middle;
     }
-        bottom += '|';
+        bottom += '╝';
         pizza+=bottom;
     return pizza;
 
