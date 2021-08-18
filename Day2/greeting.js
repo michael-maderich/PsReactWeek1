@@ -11,8 +11,8 @@ const genders = ["self", "male", "female", "nonbinary"];
 
 function firstCharsUpper(phrase) {
     let words = phrase.split(" ");
-    words.forEach( (w, i, arr) => {
-        arr[i] = w.charAt(0).toUpperCase() + w.toLowerCase().slice(1);
+    words.forEach( (w, i, p) => {
+        p[i] = w.charAt(0).toUpperCase() + w.toLowerCase().slice(1);
     });
     return words.join(" ");
 }
